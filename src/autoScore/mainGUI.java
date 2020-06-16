@@ -12,13 +12,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+
+import static autoScore.question.readFile;
+import static autoScore.score.getScore;
 
 public class mainGUI extends JFrame implements ActionListener {
-    private JTextField question;
-    private JButton A,B,C,D;
+    private JTextArea question;
+    private JButton A;
+    private JButton B;
+    private JButton C;
+    private JButton D;
+    int score;
     Container c;//创建主容器
     //构造方法
-    public mainGUI(){
+    public mainGUI() throws IOException {
         //创建窗口容器
         super("Auto score to exam");
        /* this.setBounds(100,100,100,100);*/
@@ -34,11 +42,19 @@ public class mainGUI extends JFrame implements ActionListener {
         //网格组布局管理器
 
         //创建问题显示位置
-        JLabel questionStudent = new JLabel("这是问题的位置andFuckJavaGUI");
+        JTextArea questionStudent = new JTextArea("这是问题的位置andFuckJavaGUI");
         GridBagLayout questtionText = new GridBagLayout();
         questionStudent.setBounds(0,0,900,200);
-        questionStudent.setText("fuckJavaGUI");//更改标签内容
+        questionStudent.setText(readFile(11));//更改标签内容
+        questionStudent.setLineWrap(true);
+        questionStudent.setEditable(false);
+       /* JTextField textAreaOutput = new JTextField();
+        questionStudent.add(new JScrollPane(textAreaOutput));*/
+        questionStudent.cut();
+        questionStudent.copy();
         this.add(questionStudent);
+
+        //pack();
         //字体
         questionStudent.setFont(new Font("微软雅黑",Font.BOLD,20));
 
@@ -68,25 +84,32 @@ public class mainGUI extends JFrame implements ActionListener {
     /*private class panelABCD extends JPanel implements ActionListener{
 
     }*/
+
     @Override
     public void actionPerformed(ActionEvent e) {
+        String str = new String();
         if(e.getActionCommand().equals("A")){
-           // return "A";
+            str= "A";
+            getScore(score,A,anwer);
         }
         if (e.getActionCommand().equals("B")){
-           // return "B";
+            str= "B";
+
         }
-        if (e.getActionCommand().equals("B")){
-           // return "C";
+        if (e.getActionCommand().equals("C")){
+            str= "C";
+
         }
-        if (e.getActionCommand().equals("B")){
-           // return "D";
+        if (e.getActionCommand().equals("D")){
+            str= "D";
+
+        }
         }
 
 
     }
-    /*public static void main(String[] args) {
+    /*public clstatic void main(String[] args) throws IOException {
         mainGUI mainGUI= new mainGUI();
     }*/
-}
+
 
