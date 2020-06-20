@@ -9,4 +9,7 @@ public class score {
                 return score;
             }
         }
+        public static void scoreToTxt(/*String name*,*/int score){
+
+        }
 }

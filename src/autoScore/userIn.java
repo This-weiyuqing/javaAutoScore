@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 public class userIn extends JFrame implements ActionListener {
     //设置组件
@@ -85,6 +86,12 @@ public class userIn extends JFrame implements ActionListener {
                 }
             }
         });
+        /*login.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseAdapter e) throws IOException {]
+                int c=e.getButton();
+                mainGUI a=new mainGUI();
+            }
+        });*/
     }
 
     @Override

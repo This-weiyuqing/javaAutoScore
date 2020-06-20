@@ -7,14 +7,11 @@
  */
 
 package autoScore;
-import autoScore.userIn;
-import autoScore.*;
-
 import java.io.IOException;
 
 public class mainDo{
     public static void main(String[] args) throws IOException {
-        int score=0;
+        //int score=0;
         mainGUI gui=new mainGUI();
     }
 }
