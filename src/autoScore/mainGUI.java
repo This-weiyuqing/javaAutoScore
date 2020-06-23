@@ -17,13 +17,14 @@ import java.io.IOException;
 import static autoScore.answer.readFireAnswer;
 import static autoScore.question.readFile;
 import static autoScore.score.getScore;
+import static autoScore.score.scoreToTxt;
 
 public class mainGUI extends JFrame implements ActionListener {
     // public static JTextField questionStudent;
     JTextField questionStudent = new JTextField("问题的位置");
     //GridBagLayout questionText =new GridBagLayout();
     // questionStudent.setLineWrap(true);
-    int score;
+    //public int score;
     Container c;//创建主容器
     private JTextArea question;
     private JButton A;
@@ -96,14 +97,16 @@ public class mainGUI extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         //int用来存储现在是第几题
         int whatQuestionW = 0;
-        if (whatQuestionW < 20) {
-
+        int scoreUser =0 ;
+        if (whatQuestionW < 1) {
 
             //int whatQuestionW =0;
             String str = new String();
             if (e.getActionCommand().equals("A")) {
                 str = "A";
-                chooseDo(str, whatQuestionW);
+                /*scoreUser=*/chooseDo(str, whatQuestionW,scoreUser);
+                whatQuestionW++;
+                //actionPerformed(ActionEvent e);
             }
                 /*str = "A";
                 char ch[] = str.toCharArray();
@@ -124,44 +127,53 @@ public class mainGUI extends JFrame implements ActionListener {
             }*/
             if (e.getActionCommand().equals("B")) {
                 str = "B";
-                chooseDo(str, whatQuestionW);
+                /*scoreUser=*/chooseDo(str, whatQuestionW,scoreUser);whatQuestionW++;
 //                System.out.println(whatQuestionW);
             }
             if (e.getActionCommand().equals("C")) {
                 str = "C";
-                chooseDo(str, whatQuestionW);
+                /*scoreUser=*/chooseDo(str, whatQuestionW,scoreUser);whatQuestionW++;
             }
             if (e.getActionCommand().equals("D")) {
                 str = "D";
-                chooseDo(str, whatQuestionW);
+               /* scoreUser=*/chooseDo(str, whatQuestionW,scoreUser);whatQuestionW++;
             }
             whatQuestionW++;
         } else {
             //这里写最后结果被写入文件夹啊
+            try {
+                scoreToTxt(scoreUser);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+                System.out.println("抛出异常1");
+            }
         }
 
     }
 
     //按键之后要做的事
-    public void chooseDo(String str, int whatQuestionW) {
+    public int chooseDo(String str, int whatQuestionW,int score) {
         //str = "A";
         char ch[] = str.toCharArray();
         char answer = ch[0];
-
+        //int score = 0;
         try {
-            getScore(score, answer, readFireAnswer(whatQuestionW));
+            score = getScore(score, answer, readFireAnswer(whatQuestionW));
         } catch (IOException ioException) {
             ioException.printStackTrace();
+            System.out.println("抛出异常2");
         }
         whatQuestionW++;
-        System.out.println(whatQuestionW);
+        //System.out.println(whatQuestionW);
+        System.out.println(score);
         try {
             questionStudent.setText(readFile(1));
         } catch (IOException ioException) {
-            ioException.printStackTrace();
-        }
+            ioException.printStackTrace();System.out.println("抛出异常3");
+        }return score;
         //mainGUI=new mainGUI();
         //actionPerformed(ActionEvent e);
+        //chooseDo(str,whatQuestionW);
     }
 }
     /*public clstatic void main(String[] args) throws IOException {
