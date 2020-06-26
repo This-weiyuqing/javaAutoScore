@@ -20,6 +20,9 @@ import static autoScore.score.getScore;
 import static autoScore.score.scoreToTxt;
 
 public class mainGUI extends JFrame implements ActionListener {
+    int whatQuestionW;
+    int scoreUser = 0;
+    int whatQuestion;
     // public static JTextField questionStudent;
     JTextField questionStudent = new JTextField("问题的位置");
     //GridBagLayout questionText =new GridBagLayout();
@@ -92,20 +95,19 @@ public class mainGUI extends JFrame implements ActionListener {
     /*private class panelABCD extends JPanel implements ActionListener{
 
     }*/
-
     @Override
     public void actionPerformed(ActionEvent e) {
         //int用来存储现在是第几题
-        int whatQuestionW = 0;
-        int scoreUser =0 ;
-        if (whatQuestionW < 1) {
+        //int whatQuestionW;
 
+      //  for (whatQuestionW = 0; whatQuestionW < 1; whatQuestionW++) {
             //int whatQuestionW =0;
             String str = new String();
             if (e.getActionCommand().equals("A")) {
                 str = "A";
-                /*scoreUser=*/chooseDo(str, whatQuestionW,scoreUser);
-                whatQuestionW++;
+                scoreUser = chooseDo(str, whatQuestionW, scoreUser);
+                whatQuestion = whatQuestionW++;
+                whatQuestionW=whatQuestionW++;
                 //actionPerformed(ActionEvent e);
             }
                 /*str = "A";
@@ -127,16 +129,86 @@ public class mainGUI extends JFrame implements ActionListener {
             }*/
             if (e.getActionCommand().equals("B")) {
                 str = "B";
-                /*scoreUser=*/chooseDo(str, whatQuestionW,scoreUser);whatQuestionW++;
+                scoreUser = chooseDo(str, whatQuestionW, scoreUser);
+                whatQuestion = whatQuestionW++;
+                whatQuestionW=whatQuestionW++;
 //                System.out.println(whatQuestionW);
             }
             if (e.getActionCommand().equals("C")) {
                 str = "C";
-                /*scoreUser=*/chooseDo(str, whatQuestionW,scoreUser);whatQuestionW++;
+                scoreUser = chooseDo(str, whatQuestionW, scoreUser);
+                whatQuestion = whatQuestionW++;
+                whatQuestionW=whatQuestionW++;
             }
             if (e.getActionCommand().equals("D")) {
                 str = "D";
-               /* scoreUser=*/chooseDo(str, whatQuestionW,scoreUser);whatQuestionW++;
+                scoreUser = chooseDo(str, whatQuestionW, scoreUser);
+                whatQuestion=whatQuestionW++;
+                whatQuestionW=whatQuestionW++;
+            }
+            //whatQuestionW++;
+       // }
+        //这里写最后结果被写入文件夹啊
+        try {
+            String studetnNum=new String();
+
+            scoreToTxt(userIn.getStudentNumber(),scoreUser);
+            System.out.println(userIn.getStudentNumber());
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+            System.out.println("抛出异常1");
+        }
+    }
+
+
+
+
+
+    /*@Override
+    public void actionPerformed(ActionEvent e) {
+        //int用来存储现在是第几题
+        int whatQuestionW = 0;
+        int scoreUser =0 ;
+        if (whatQuestionW <= 1) {
+
+            //int whatQuestionW =0;
+            String str = new String();
+            if (e.getActionCommand().equals("A")) {
+                str = "A";
+                scoreUser=chooseDo(str, whatQuestionW,scoreUser);
+                whatQuestionW++;
+                //actionPerformed(ActionEvent e);
+            }
+                */
+    /*str = "A";
+                char ch[] = str.toCharArray();
+                char answer = ch[0];
+
+                try {
+                    getScore(score, answer, readFireAnswer(whatQuestionW));
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                whatQuestionW++;
+                System.out.println(whatQuestionW);
+                try {
+                    questionStudent.setText(readFile(1));
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+            }*//*
+            if (e.getActionCommand().equals("B")) {
+                str = "B";
+                scoreUser=chooseDo(str, whatQuestionW,scoreUser);whatQuestionW++;
+//                System.out.println(whatQuestionW);
+            }
+            if (e.getActionCommand().equals("C")) {
+                str = "C";
+                scoreUser=chooseDo(str, whatQuestionW,scoreUser);whatQuestionW++;
+            }
+            if (e.getActionCommand().equals("D")) {
+                str = "D";
+                scoreUser=chooseDo(str, whatQuestionW,scoreUser);whatQuestionW++;
             }
             whatQuestionW++;
         } else {
@@ -149,10 +221,10 @@ public class mainGUI extends JFrame implements ActionListener {
             }
         }
 
-    }
+    }*/
 
     //按键之后要做的事
-    public int chooseDo(String str, int whatQuestionW,int score) {
+    public int chooseDo(String str, int whatQuestionW, int score) {
         //str = "A";
         char ch[] = str.toCharArray();
         char answer = ch[0];
@@ -163,14 +235,16 @@ public class mainGUI extends JFrame implements ActionListener {
             ioException.printStackTrace();
             System.out.println("抛出异常2");
         }
-        whatQuestionW++;
-        //System.out.println(whatQuestionW);
-        System.out.println(score);
+        whatQuestionW++;//题号计算方式不同
+        System.out.println("quention" + whatQuestionW);
+        System.out.println("score" + score);
         try {
             questionStudent.setText(readFile(1));
         } catch (IOException ioException) {
-            ioException.printStackTrace();System.out.println("抛出异常3");
-        }return score;
+            ioException.printStackTrace();
+            System.out.println("抛出异常3");
+        }
+        return score;
         //mainGUI=new mainGUI();
         //actionPerformed(ActionEvent e);
         //chooseDo(str,whatQuestionW);

@@ -13,5 +13,11 @@ public class mainDo{
     public static void main(String[] args) throws IOException {
         //int score=0;
         mainGUI gui=new mainGUI();
+       /* new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("stop question");
+            }
+        },1000);*/
     }
 }

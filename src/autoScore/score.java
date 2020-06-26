@@ -13,8 +13,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class score {
-    public static int getScore(int score, char choose, char anwser) {
-        if (choose == anwser) {
+    public static int getScore(int score, char choose, char answer) {
+        if (choose == answer) {
             score++;
             return score;
         } else {
@@ -22,11 +22,11 @@ public class score {
         }
     }
 
-    public static void scoreToTxt(/*String name*,*/int score) throws IOException {
+    public static void scoreToTxt(String name,int score) throws IOException {
         File writename = new File("D:\\WindowsCToD\\fire\\GeneticsMultipleChoice\\Score\\output.txt"); // 相对路径，如果没有则要建立一个新的output。txt文件
         writename.createNewFile();
         BufferedWriter out = new BufferedWriter(new FileWriter(writename));
-        out.write(/*name+*/"score:" + score + "\r\n"); // \r\n即为换行
+        out.write("studentID: "+name+" score: " + score + "\r\n"); // \r\n即为换行
         out.flush();
         out.close();
     }

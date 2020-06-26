@@ -11,5 +11,6 @@ package autoScore;
 public class useInDemo {
     public static void main(String[] args) {
         userIn GUI=new userIn();
+        //System.out.println(userIn.getStudentNumber());
     }
 }
