@@ -22,6 +22,6 @@ public class useInDemo {
                 System.out.println("stop question");
                 System.exit(0);
             }
-        },10000);
+        },10000000);
     }
 }

@@ -203,7 +203,8 @@ public class mainGUI extends JFrame implements ActionListener {
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
-            }*//*
+            }*/
+    /*
             if (e.getActionCommand().equals("B")) {
                 str = "B";
                 scoreUser=chooseDo(str, whatQuestionW,scoreUser);whatQuestionW++;
