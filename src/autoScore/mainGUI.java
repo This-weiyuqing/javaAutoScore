@@ -99,15 +99,17 @@ public class mainGUI extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         //int用来存储现在是第几题
         //int whatQuestionW;
+        if (whatQuestion < 1) {
 
-      //  for (whatQuestionW = 0; whatQuestionW < 1; whatQuestionW++) {
+
+            //  for (whatQuestionW = 0; whatQuestionW < 1; whatQuestionW++) {
             //int whatQuestionW =0;
             String str = new String();
             if (e.getActionCommand().equals("A")) {
                 str = "A";
                 scoreUser = chooseDo(str, whatQuestionW, scoreUser);
                 whatQuestion = whatQuestionW++;
-                whatQuestionW=whatQuestionW++;
+                whatQuestionW = whatQuestionW++;
                 //actionPerformed(ActionEvent e);
             }
                 /*str = "A";
@@ -131,34 +133,37 @@ public class mainGUI extends JFrame implements ActionListener {
                 str = "B";
                 scoreUser = chooseDo(str, whatQuestionW, scoreUser);
                 whatQuestion = whatQuestionW++;
-                whatQuestionW=whatQuestionW++;
+                whatQuestionW = whatQuestionW++;
 //                System.out.println(whatQuestionW);
             }
             if (e.getActionCommand().equals("C")) {
                 str = "C";
                 scoreUser = chooseDo(str, whatQuestionW, scoreUser);
                 whatQuestion = whatQuestionW++;
-                whatQuestionW=whatQuestionW++;
+                whatQuestionW = whatQuestionW++;
             }
             if (e.getActionCommand().equals("D")) {
                 str = "D";
                 scoreUser = chooseDo(str, whatQuestionW, scoreUser);
-                whatQuestion=whatQuestionW++;
-                whatQuestionW=whatQuestionW++;
+                whatQuestion = whatQuestionW++;
+                whatQuestionW = whatQuestionW++;
             }
-            //whatQuestionW++;
-       // }
+        } else
+        //whatQuestionW++;
+        // }
         //这里写最后结果被写入文件夹啊
-        try {
-            String studetnNum=new String();
-            scoreToTxt(userIn.getStudentNumber(),scoreUser);
-            System.out.println(userIn.getStudentNumber());
-            //dispose();
-            //System.exit(0);
+        {
+            try {
+                String studetnNum = new String();
+                scoreToTxt(userIn.getStudentNumber(), scoreUser);
+                System.out.println(userIn.getStudentNumber());
+                //dispose();
+                System.exit(0);
 
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-            System.out.println("抛出异常1");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+                System.out.println("抛出异常1");
+            }
         }
     }
 
