@@ -9,21 +9,19 @@
 package autoScore;
 
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
 
-public class mainDo{
+public class mainTextDemo {
     public static void main(String[] args) throws IOException {
         //int score=0;
         mainGUI gui=new mainGUI();
         //添加答题计时功能
-        new Timer().schedule(new TimerTask() {
+       /* new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 System.out.println("stop question");
                 System.exit(0);
             }
-        },10000);
+        },10000);*/
 
     }
 }
