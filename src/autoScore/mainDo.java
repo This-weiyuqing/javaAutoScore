@@ -7,17 +7,23 @@
  */
 
 package autoScore;
+
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class mainDo{
     public static void main(String[] args) throws IOException {
         //int score=0;
         mainGUI gui=new mainGUI();
-       /* new Timer().schedule(new TimerTask() {
+        //添加答题计时功能
+        new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 System.out.println("stop question");
+                System.exit(0);
             }
-        },1000);*/
+        },10000);
+
     }
 }

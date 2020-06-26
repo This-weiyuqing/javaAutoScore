@@ -151,9 +151,11 @@ public class mainGUI extends JFrame implements ActionListener {
         //这里写最后结果被写入文件夹啊
         try {
             String studetnNum=new String();
-
             scoreToTxt(userIn.getStudentNumber(),scoreUser);
             System.out.println(userIn.getStudentNumber());
+            //dispose();
+            //System.exit(0);
+
         } catch (IOException ioException) {
             ioException.printStackTrace();
             System.out.println("抛出异常1");

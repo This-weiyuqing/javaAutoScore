@@ -8,9 +8,20 @@
 
 package autoScore;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class useInDemo {
     public static void main(String[] args) {
         userIn GUI=new userIn();
         //System.out.println(userIn.getStudentNumber());
+        //add timetask to set user time
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("stop question");
+                System.exit(0);
+            }
+        },6000);
     }
 }
